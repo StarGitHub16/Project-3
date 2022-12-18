@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'https://esm.sh/react@18.2.0'
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
@@ -18,9 +17,12 @@ function Main() {
 
 //The NavBar Menu
 function Nav() {
+  var style = {
+    color: 'red'
+  }
   return (
-    <div>
-      <Link to={'/'}>Home</Link> |<Link to={'/contact'}>Contact</Link>
+    <div style={style}>
+      <Link to={'/'}>Home</Link> | <Link to={'/contact'}>Contact</Link>
     </div>
   );
 }
@@ -52,10 +54,15 @@ class Contact extends React.Component {
     })
   }
   
-  
   render(){
+    var style = {
+      border: '1px solid',
+      margin: 'auto',
+      width: '50%',
+      padding: '10px'
+    }
     return(
-      <form onSubmit={this.handleSubmit}>
+      <form style={style} onSubmit={this.handleSubmit}>
         <div>
           <label>First Name: </label>
           <input 
@@ -199,13 +206,14 @@ class App extends React.Component {
   }
   render() {
     var style = {
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center'
+      margin: 'auto',
+      width: '50%',
+      padding: '10px',
+      textalign: 'center'
     }
     return (
       <div style={style}>
-        <input
+        <input style={style}
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
         />
