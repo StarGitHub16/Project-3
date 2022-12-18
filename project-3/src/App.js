@@ -17,14 +17,11 @@ function Main() {
 
 //The NavBar Menu
 function Nav() {
-  var style = {
-    background: 'black',
-    color: 'red'
-  }
   return (
-    <div style={style}>
-      <NavLink to={'/'} className="links">Home</NavLink> | 
+    <div id="nav">
+      Seasonal Wishlist Designer
       <NavLink to={'/contact'} className="links">Contact</NavLink>
+      <NavLink to={'/'} className="links">Home</NavLink> 
     </div>
   );
 }
@@ -143,10 +140,10 @@ function Post(props) {
   return (
     <div style={style}>
       <PostButton  label="X" handleClick={props.removeItem} />
-      <PostText text={props.title} width="2000" />
-      <PostButton label="^" handleClick={props.incrementRank} />
+      <PostText text={props.title} width="200" />
+      <PostButton label="/\" handleClick={props.incrementRank} />
       <PostText text={props.rank} width="20" />
-      <PostButton label="v" handleClick={props.decrementRank} />
+      <PostButton label="\/" handleClick={props.decrementRank} />
     </div>
   );
 }

@@ -46,20 +46,25 @@ body{
   background-position: center;
 }
 
+#nav{
+  background: black;
+  color: rgb(0, 255, 200);
+  font-family: cursive;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
 
 .links{
       float: right;
-      display: inline;
       margin-right: 30px;
-      font-weight: bold;
-      font-size: 18px;
       font-family: cursive;
       color: rgb(255,255,255);
       text-decoration: none;
 }
 
 .links:hover {
-  color: yellow;
+  color: lime;
   text-decoration: none;
 }
 
