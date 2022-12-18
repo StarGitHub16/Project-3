@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'https://esm.sh/react@18.2.0'
-import {BrowserRouter, Routes, Route, Link} from 'react-router-dom'
+import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
 
 //This function will connect everything together
 function Main() {
@@ -18,11 +18,13 @@ function Main() {
 //The NavBar Menu
 function Nav() {
   var style = {
+    background: 'black',
     color: 'red'
   }
   return (
     <div style={style}>
-      <Link to={'/'}>Home</Link> | <Link to={'/contact'}>Contact</Link>
+      <NavLink to={'/'} className="links">Home</NavLink> | 
+      <NavLink to={'/contact'} className="links">Contact</NavLink>
     </div>
   );
 }
@@ -111,12 +113,8 @@ class Contact extends React.Component {
 
 //The Post button you will be able to interact with when a post is made.
 function PostButton(props) {
-  var style = {
-    width: 24,
-    height: 24
-  }
   return (
-    <button style={style} onClick={() => props.handleClick()}>
+    <button id="postButton" onClick={() => props.handleClick()}>
       {props.label}
     </button>
   );
@@ -127,7 +125,10 @@ function PostButton(props) {
 function PostText(props) {
   var style = {
     border: '1px solid black',
-    width: props.width,
+    borderRadius: '5px',
+    width: '100%',
+    background: 'red',
+    color: 'white',
   }
   return <div style={style}>{props.text}</div>;
 }
@@ -137,12 +138,12 @@ function Post(props) {
   var style = {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   }
   return (
     <div style={style}>
-      <PostButton label="X" handleClick={props.removeItem} />
-      <PostText text={props.title} width="200" />
+      <PostButton  label="X" handleClick={props.removeItem} />
+      <PostText text={props.title} width="2000" />
       <PostButton label="^" handleClick={props.incrementRank} />
       <PostText text={props.rank} width="20" />
       <PostButton label="v" handleClick={props.decrementRank} />
@@ -209,15 +210,15 @@ class App extends React.Component {
       margin: 'auto',
       width: '50%',
       padding: '10px',
-      textalign: 'center'
+      textalign: 'center',
     }
     return (
       <div style={style}>
-        <input style={style}
+        <input className= 'inputField'
           value={this.state.value}
           onChange={this.handleChange.bind(this)}
         />
-        <button onClick={() => this.addItem()}>Submit</button>
+        <button id="submit" onClick={() => this.addItem()}>Submit</button>
         <PostList
           postList={this.state.items}
           updateRank={this.updateRank.bind(this)}
