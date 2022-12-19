@@ -13,94 +13,6 @@ function Nav() {
   );
 }
 
-//The Contacts Webpage of Application
-class Contact extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = { firstName:'',lastName:'', email:'', comment:''}
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
-  }
-  
-  handleSubmit(event){
-    const { firstName, lastName, email, comment } = this.state
-    event.preventDefault()
-    alert(`
-      First Name : ${firstName}
-      Last Name : ${lastName}
-      Email : ${email}
-      Comment: ${comment}
-    `)
-  }
-  
- 
-  handleChange(event){
-    this.setState({
-      [event.target.name] : event.target.value
-    })
-  }
-  
-  render(){
-    var style = {
-      border: '1px solid',
-      margin: '60px auto auto auto',
-      width: '60%',
-      padding: '30px',
-      background: 'white',
-      
-    }
-    return(
-      <form style={style} onSubmit={this.handleSubmit}>
-        <div>
-          <label>First Name: </label>
-          <br />
-          <input 
-            name='firstName'
-            placeholder='Enter your First Name' 
-            value = {this.state.firstName}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label>Last Name: </label>
-          <br />
-          <input
-            name='lastName' 
-            placeholder='Enter your Last Name'
-            value={this.state.lastName}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label>Email: </label>
-          <br />
-          <input
-            name='email' 
-            placeholder='Enter a valid Email'
-            type ='email'
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-        </div>
-        <div>
-          <label>Comment: </label>
-          <br />
-          <input
-            name='comment' 
-            placeholder='Leave a comment....'
-            value={this.state.comment}
-            onChange={this.handleChange}
-          />
-        </div>
-        <br />
-        <div>
-          <button>Submit</button>
-        </div>
-      </form>
-    )
-  }
-}
-
 
 //The Post button you will be able to interact with when a post is made.
 function PostButton(props) {
@@ -173,7 +85,7 @@ class App extends React.Component {
   addItem() {
     var itemsCopy = this.state.items.slice();
     var truncatedString = this.state.value.substring(0, 20);
-    itemsCopy.push({ title: truncatedString, rank: 0 });
+    itemsCopy.push({title: truncatedString, rank: 0 });
     itemsCopy.sort((a, b) => {
       return b.rank - a.rank;
     });
@@ -217,6 +129,95 @@ class App extends React.Component {
         />
       </div>
     );
+  }
+}
+
+
+//The Contacts Webpage of Application
+class Contact extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = { firstName:'',lastName:'', email:'', comment:''}
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  
+  handleSubmit(event){
+    const { firstName, lastName, email, comment } = this.state
+    event.preventDefault()
+    alert(`
+      First Name : ${firstName}
+      Last Name : ${lastName}
+      Email : ${email}
+      Comment: ${comment}
+    `)
+  }
+  
+ 
+  handleChange(event){
+    this.setState({
+      [event.target.name] : event.target.value
+    })
+  }
+  
+  render(){
+    var style = {
+      border: '1px solid',
+      margin: '60px auto auto auto',
+      width: '60%',
+      padding: '30px',
+      background: 'white',
+      borderRadius: '5px'
+    }
+    return(
+      <form style={style} onSubmit={this.handleSubmit}>
+        <div>
+          <label>First Name: </label>
+          <br />
+          <input 
+            name='firstName'
+            placeholder='Enter your First Name' 
+            value = {this.state.firstName}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label>Last Name: </label>
+          <br />
+          <input
+            name='lastName' 
+            placeholder='Enter your Last Name'
+            value={this.state.lastName}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label>Email: </label>
+          <br />
+          <input
+            name='email' 
+            placeholder='Enter a valid Email'
+            type ='email'
+            value={this.state.email}
+            onChange={this.handleChange}
+          />
+        </div>
+        <div>
+          <label>Comment: </label>
+          <br />
+          <input
+            name='comment' 
+            placeholder='Leave a comment....'
+            value={this.state.comment}
+            onChange={this.handleChange}
+          />
+        </div>
+        <br />
+        <div>
+          <button>Submit</button>
+        </div>
+      </form>
+    )
   }
 }
 
