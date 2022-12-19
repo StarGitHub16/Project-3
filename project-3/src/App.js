@@ -2,19 +2,6 @@ import './App.css';
 import React from 'https://esm.sh/react@18.2.0'
 import {BrowserRouter, Routes, Route, NavLink} from 'react-router-dom'
 
-//This function will connect everything together
-function Main() {
-  return (
-    <BrowserRouter>
-    <Nav />
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
 //The NavBar Menu
 function Nav() {
   return (
@@ -56,14 +43,17 @@ class Contact extends React.Component {
   render(){
     var style = {
       border: '1px solid',
-      margin: 'auto',
-      width: '50%',
-      padding: '10px'
+      margin: '60px auto auto auto',
+      width: '60%',
+      padding: '30px',
+      background: 'white',
+      
     }
     return(
       <form style={style} onSubmit={this.handleSubmit}>
         <div>
           <label>First Name: </label>
+          <br />
           <input 
             name='firstName'
             placeholder='Enter your First Name' 
@@ -73,6 +63,7 @@ class Contact extends React.Component {
         </div>
         <div>
           <label>Last Name: </label>
+          <br />
           <input
             name='lastName' 
             placeholder='Enter your Last Name'
@@ -82,9 +73,10 @@ class Contact extends React.Component {
         </div>
         <div>
           <label>Email: </label>
+          <br />
           <input
             name='email' 
-            placeholder='Enter a Valid Email'
+            placeholder='Enter a valid Email'
             type ='email'
             value={this.state.email}
             onChange={this.handleChange}
@@ -92,6 +84,7 @@ class Contact extends React.Component {
         </div>
         <div>
           <label>Comment: </label>
+          <br />
           <input
             name='comment' 
             placeholder='Leave a comment....'
@@ -99,6 +92,7 @@ class Contact extends React.Component {
             onChange={this.handleChange}
           />
         </div>
+        <br />
         <div>
           <button>Submit</button>
         </div>
@@ -224,6 +218,19 @@ class App extends React.Component {
       </div>
     );
   }
+}
+
+//This function will connect everything together
+function Main() {
+  return (
+    <BrowserRouter>
+    <Nav />
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default Main;
